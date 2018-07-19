@@ -6,8 +6,16 @@ def encrypt(str,shift)
   str_array = str.split("")
   str_array.map! do |letter|
 
-    index_no = HASH_INDEX[letter] + shift
-    letter = HASH_INDEX.key(index_no)
+    if letter != " "
+      index_no = HASH_INDEX[letter] + shift
+      #puts index_no
+      index_no > 26 ? index_no -= 26 : index_no
+      #puts index_no
+      letter = HASH_INDEX.key(index_no)
+
+    else
+      letter
+    end
 
   end
 
@@ -17,4 +25,8 @@ end
 
 
 
-encrypt("toilet",5)
+encrypt("Hello world hello",0)
+
+
+
+# make it so it keeps capitals

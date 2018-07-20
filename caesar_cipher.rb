@@ -3,8 +3,13 @@ HASH_INDEX = {"a" => 1, "b" => 2, "c" => 3, "d" => 4, "e" => 5, "f" => 6, "g" =>
 str_array = []
 
 def encrypt(str,shift)
+  upcase_flag = false
   str_array = str.split("")
   str_array.map! do |letter|
+
+    letter == letter.upcase ? upcase_flag = true : upcase_flag = false
+    letter.downcase!
+
 
     if letter != " "
       index_no = HASH_INDEX[letter] + shift
@@ -12,6 +17,7 @@ def encrypt(str,shift)
       index_no > 26 ? index_no -= 26 : index_no
       #puts index_no
       letter = HASH_INDEX.key(index_no)
+      upcase_flag == true ? letter.upcase : letter
 
     else
       letter
@@ -25,8 +31,4 @@ end
 
 
 
-encrypt("Hello world hello",0)
-
-
-
-# make it so it keeps capitals
+encrypt("Hello wOrld hEllo",10)

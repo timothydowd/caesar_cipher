@@ -11,11 +11,9 @@ def encrypt(str,shift)
     letter.downcase!
 
 
-    if letter != " "
+    if letter =~ /[a-c]/
       index_no = HASH_INDEX[letter] + shift
-      #puts index_no
       index_no > 26 ? index_no -= 26 : index_no
-      #puts index_no
       letter = HASH_INDEX.key(index_no)
       upcase_flag == true ? letter.upcase : letter
 
@@ -31,4 +29,4 @@ end
 
 
 
-encrypt("Hello wOrld hEllo",10)
+encrypt("Hello wOr%d hEllo",10)
